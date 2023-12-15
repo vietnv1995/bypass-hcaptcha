@@ -25,7 +25,7 @@
   "homepage": "https://nocaptchaai.com",
   "repository": {
     "type": "git",
-    "url": "https:git@github.com:noCaptchaAi/nocaptchaai-puppeteer.git"
+    "url": "https://github.com/vietnv1995/bypass-hcaptcha"
   },
   "bugs": {
     "url": "https://github.com/noCaptchaAi/nocaptchaai-puppeteer/issues"

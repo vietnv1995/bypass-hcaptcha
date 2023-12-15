@@ -26,9 +26,9 @@ export const solveCaptcha = async (
   if (!outerFrame) throw new Error('solveCaptcha: captcha outer frame not found');
   if (!innerFrame) throw new Error('solveCaptcha: captcha inner frame not found');
 
-  const checkbox = await outerFrame.waitForSelector('#checkbox');
+  // const checkbox = await outerFrame.waitForSelector('#checkbox');
 
-  if (!(await innerFrame.$('.challenge'))) await checkbox?.click();
+  // if (!(await innerFrame.$('.challenge'))) await checkbox?.click();
 
   try {
     const language = await innerFrame.evaluate(() => document.documentElement.lang);
@@ -40,8 +40,7 @@ export const solveCaptcha = async (
 
     await innerFrame.waitForSelector('.challenge-container', { timeout: 10 * 1000 });
 
-    while ((await outerFrame.$('#checkbox[aria-checked=false]')) !== null) {
-      const images = await getImages(innerFrame);
+    const images = await getImages(innerFrame);
       if (debug && images) console.log('* Puzzle Images found');
 
       const target = await getTarget(innerFrame);
@@ -121,11 +120,10 @@ export const solveCaptcha = async (
 
       if (debug) console.log('* Waiting a second');
       await sleep(1000);
-    }
   } catch (err) {
-    const isSolved = (await outerFrame.$('#checkbox[aria-checked=true]')) !== null;
+    // const isSolved = (await outerFrame.$('#checkbox[aria-checked=true]')) !== null;
     if (debug) console.log('* Puzzle solved');
 
-    if (!isSolved) throw err;
+    // if (!isSolved) throw err;
   }
 };
